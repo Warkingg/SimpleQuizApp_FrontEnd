@@ -1,0 +1,10 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+.content {
+    background-color: #f7a400;
+    height: 100vh;
+}
+
+

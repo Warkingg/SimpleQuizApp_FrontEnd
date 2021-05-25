@@ -1,0 +1,32 @@
+<br><br>
+<app-header></app-header>
+<br><br><br><br>
+<div class="container">
+  <div class="card">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Player Name</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Total time</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let h of histories">
+          <tr>
+            <td>{{h.username}}</td>
+            <td>{{h.levelName}}</td>
+            <td>{{h.themeName}}</td>
+            <td>{{h.total}}</td>
+            <td>{{h.sore}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+<div>
+    <button class="btn btn-primary" [routerLink]="['/theme']"
+    style="background: #3a9efd; margin-top: 15px; border-color: #3a9efd;">Start Quiz</button>
+</div>
+</div>
