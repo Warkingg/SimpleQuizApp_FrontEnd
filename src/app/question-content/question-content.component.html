@@ -1,33 +1,86 @@
+<div id="main-container">
+  <div class="card">
 
+    <div class="list-group">
+      <button type="button" class="list-group-item list-group-item-action active" style="cursor: default;">
+        Questions
+      </button>
+    </div>
+  </div>
 
-        <div class="card">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let q of questions, let i = index">
+      <mat-expansion-panel-header (click)="findResponse(q.id)">
+        <mat-panel-title>
+          {{i + 1}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{q.question}}
+        </mat-panel-description>
+        <a (click)="onOpenModal(q, 'edit')" type="button"><i class='far fa-edit'></i></a>
+        <a (click)="onOpenModal(q, 'delete')" type="button"><i class='fas fa-trash-alt'
+                                                               style='color:red; margin: 0 12px'></i></a>
+      </mat-expansion-panel-header>
 
-            <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active" style="cursor: default;">
-                 Questions
-                </button>
+      <div>
+        <p style="color: red">{{q?.response1}}</p>
+        <p style="color: red">{{q?.response2}}</p>
+        <p style="color: red">{{q?.response3}}</p>
+        <p *ngIf="q.correct==q?.response1" style="color: olivedrab">Correct answer:  {{q?.response1}}</p>
+        <p *ngIf="q.correct==q?.response2" style="color: olivedrab">Correct answer:  {{q?.response2}}</p>
+        <p *ngIf="q.correct==q?.response3" style="color: olivedrab">Correct answer:  {{q?.response3}}</p>
+        <p *ngIf="q.correct==q?.response4" style="color: olivedrab">Correct answer:  {{q?.response4}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="modal fade" id="updateQuestionModal" tabindex="-1" role="dialog" aria-labelledby="questionEditModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateQuestionModalLabel">Edit level nam is {{editQuestion?.question}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="name" class="font-weight-bold">Difficulty</label>
+              <input type="text" ngModel="{{editQuestion?.question}}" name="name" class="form-control" id="name"
+                     aria-describedby="emailHelp" placeholder="Name">
             </div>
+            <input type="hidden" ngModel="{{editQuestion?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="onUpdateQuestion(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes
+              </button>
             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let q of questions, let i = index">
-            <mat-expansion-panel-header (click)="findResponse(q.id)">
-              <mat-panel-title>
-                {{i+1}}
-              </mat-panel-title>
-              <mat-panel-description>
-                {{q.question}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
 
-            <div>
-              <p style="color: red">{{q?.response1}}</p>
-              <p style="color: red">{{q?.response2}}</p>
-              <p style="color: red">{{q?.response3}}</p>
-              <p *ngIf="q.correct==q?.response1" style="color: olivedrab">Correct answer:  {{q?.response1}}</p>
-              <p *ngIf="q.correct==q?.response2" style="color: olivedrab">Correct answer:  {{q?.response2}}</p>
-              <p *ngIf="q.correct==q?.response3" style="color: olivedrab">Correct answer:  {{q?.response3}}</p>
-              <p *ngIf="q.correct==q?.response4" style="color: olivedrab">Correct answer:  {{q?.response4}}</p>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
+  <div class="modal fade" id="deleteQuestionModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel" style="color: red">Delete Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete theme name is  {{deleteQuestion?.question}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteQuestion(deleteQuestion?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

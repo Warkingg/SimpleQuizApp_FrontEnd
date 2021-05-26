@@ -53,6 +53,7 @@ import { ProfileComponent } from './profile/profile.component';
     AddThemeComponent,
     LevelComponent,
     AddLevelComponent,
+    UpdateThemeComponent
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
