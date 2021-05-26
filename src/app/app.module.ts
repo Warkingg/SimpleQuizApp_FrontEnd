@@ -1,6 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,  CUSTOM_ELEMENTS_SCHEMA,
-  NO_ERRORS_SCHEMA } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {
+  NgModule, CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA
+} from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
@@ -19,7 +21,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { QuestionContentComponent } from './question-content/question-content.component';
 import { ResponsesComponent } from './responses/responses.component';
 import { AddThemeComponent } from './add-theme/add-theme.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LevelComponent } from './level/level.component';
 import { AddLevelComponent } from './level/add-level/add-level.component';
@@ -28,7 +30,10 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { UpdateThemeComponent } from './update-theme/update-theme.component';
-
+import {LoginComponent} from './login/login.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ProfileComponent} from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,11 @@ import { UpdateThemeComponent } from './update-theme/update-theme.component';
     AddThemeComponent,
     LevelComponent,
     AddLevelComponent,
-    UpdateThemeComponent
+    UpdateThemeComponent,
+    LoginComponent,
+    ChangePasswordComponent,
+    ForgotPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,8 @@ import { UpdateThemeComponent } from './update-theme/update-theme.component';
     MatRadioModule,
     MatExpansionModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -74,4 +84,5 @@ import { UpdateThemeComponent } from './update-theme/update-theme.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

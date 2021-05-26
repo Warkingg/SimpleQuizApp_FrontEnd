@@ -23,7 +23,6 @@ export class ThemeService {
   public updateTheme(theme: Theme): Observable<Theme> {
     return this.http.put<Theme>(`http://localhost:8080/api/update`, theme);
   }
-
   public deleteTheme(themeId: number): Observable<void> {
     return this.http.delete<void>(`http://localhost:8080/api/delete/${themeId}`);
   }

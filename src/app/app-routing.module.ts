@@ -14,8 +14,33 @@ import { HomeComponent } from './home/home.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionContentComponent } from './question-content/question-content.component';
 import {LevelComponent} from './level/level.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
+  {
+    path:'forgot-password',
+    component:ForgotPasswordComponent
+  },
+  {
+    path:'change-password',
+    component: ChangePasswordComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
+  },
+  {
+    path:'register',
+    component:RegisterComponent
+  },
+  {
+    path:'profile/:id',
+    component:ProfileComponent
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent},
   {path: 'history/:userUsername', component: HistoriqueComponent },
