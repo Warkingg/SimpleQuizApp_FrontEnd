@@ -1,23 +1,145 @@
-<div id="add">
-    <div class="card">
-      <h2>Create an account</h2>
-      <br>
-      <form>
-        <div class="form-group row">
-          <label for="username" class="col-sm-4 col-form-label">Username</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="username">
+
+<div class="container-fluid">
+
+  <div class="card bg-light">
+
+    <article class="card-body mx-auto" style="max-width: 500px;">
+
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+
+      <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+
           </div>
+
+          <input #username="ngModel" [(ngModel)]="user.username" name="username" class="form-control"
+                 placeholder="User Name" type="text" required>
+
         </div>
-        <div class="form-group row">
-          <label for="password" class="col-sm-4 col-form-label">Password</label>
-          <div class="col-sm-9">
-            <input type="password" class="form-control" id="password">
+
+        <div class="form-groupp">
+          <span *ngIf="username.touched && username.invalid">UserName is required.</span>
+        </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+
           </div>
+
+          <input #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" class="form-control"
+                 placeholder="Last Name" type="text" required>
+
         </div>
-        <div class="btnContent" style="display: grid;">
-          <button type="submit" class="btn btn-primary">Register</button>
+
+        <div class="form-groupp">
+          <span *ngIf="lastName.touched && lastName.invalid">Last Name is required.</span>
         </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+
+          </div>
+
+          <input #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" class="form-control"
+                 placeholder="Fist Name" type="text" required>
+
+
+        </div>
+
+        <div class="form-groupp">
+          <span *ngIf="firstName.touched && firstName.invalid">First Name is required.</span>
+        </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+
+          </div>
+
+          <input #email="ngModel" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" type="email" required>
+
+        </div>
+
+        <div class="form-groupp">
+          <span *ngIf="email.touched && email.invalid">Email is required.</span>
+        </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+
+          </div>
+
+          <select class="custom-select" style="max-width: 120px;">
+            <option selected="">+84</option>
+            <option value="1">+972</option>
+            <option value="2">+198</option>
+            <option value="3">+701</option>
+          </select>
+
+          <input #phoneNumber="ngModel" [(ngModel)]="user.phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number"
+                 type="text" required>
+
+        </div>
+
+        <div class="form-groupp">
+          <span *ngIf="phoneNumber.touched && phoneNumber.invalid">Phone Number is required.</span>
+        </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+
+          </div>
+
+          <input #password="ngModel" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" type="password"
+                 required>
+
+        </div>
+
+        <div class="form-groupp">
+          <span *ngIf="password.touched && password.invalid">PassWord is required.</span>
+        </div>
+
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+
+          </div>
+
+          <input #rePassword="ngModel" [(ngModel)]="user.rePassword" name="rePassword" class="form-control" placeholder="Retype Password"
+                 type="password" required>
+
+        </div>
+
+        <div class="form-groupp">
+          <span *ngIf="rePassword.touched && rePassword.invalid">RePassWord is required.</span>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
+        </div>
+        <p class="text-center">Have an account? <a routerLink="/login">Log In</a></p>
       </form>
-   </div>
- </div>
+    </article>
+  </div>
+</div>
