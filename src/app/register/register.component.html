@@ -126,13 +126,13 @@
 
           </div>
 
-          <input #rePassword="ngModel" [(ngModel)]="user.rePassword" name="rePassword" class="form-control" placeholder="Retype Password"
+          <input #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" name="rePassword" class="form-control" placeholder="Retype Password"
                  type="password" required>
 
         </div>
 
         <div class="form-groupp">
-          <span *ngIf="rePassword.touched && rePassword.invalid">RePassWord is required.</span>
+          <span *ngIf="confirmPassword.touched && confirmPassword.invalid">RePassWord is required.</span>
         </div>
 
         <div class="form-group">
