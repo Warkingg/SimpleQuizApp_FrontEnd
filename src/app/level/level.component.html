@@ -12,8 +12,8 @@
                 *ngFor="let level of levels" style="cursor: default">
           <a [routerLink]="['/questions/level/' + idTheme + '/questionContent/' + level.id]">{{level.difficulty}}</a>
           <div>
-            <i class="far fa-edit"></i>
-            <i class='fas fa-trash-alt' style='color:red; margin: 0 12px'></i>
+            <a (click)="onOpenModal(level, 'edit')" type="button"><i class='far fa-edit'></i></a>
+            <a (click)="onOpenModal(level, 'delete')" type="button"><i class='fas fa-trash-alt' style='color:red; margin: 0 12px'></i></a>
             <button type="button" class="btn btn-link" (click)="openRegister(level.id)">Add question</button>
           </div>
         </button>
@@ -22,5 +22,57 @@
   </div>
   <div class="col-lg-8">
     <router-outlet></router-outlet>
+  </div>
+  <div class="modal fade" id="updateLevelModal" tabindex="-1" role="dialog" aria-labelledby="levelEditModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateLevelModalLabel">Edit level name is {{editLevel?.difficulty}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="name" class="font-weight-bold">Difficulty</label>
+              <input type="text" ngModel="{{editLevel?.difficulty}}" name="name" class="form-control" id="name"
+                     aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <input type="hidden" ngModel="{{editLevel?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="onUpdateLevel(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="deleteLevelModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel" style="color: red">Delete Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete theme name is  {{deleteLevel?.difficulty}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteTheme(deleteLevel?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

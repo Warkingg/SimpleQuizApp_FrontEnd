@@ -1,0 +1,18 @@
+<div id="add">
+  <div class="card">
+    <h2>Update Topic</h2>
+    <br>
+    <form (ngSubmit)="updateTheme()">
+      <div class="form-group row">
+        <div class="col-sm-9">
+          <input type="text" name="name" [(ngModel)]="theme.name" class="form-control" id="name" placeholder="Enter topic">
+        </div>
+      </div>
+
+      <div class="btnContent" style="display: grid;">
+        <button type="submit" class="btn btn-primary">Confirm</button>
+      </div>
+    </form>
+  </div>
+</div>
+

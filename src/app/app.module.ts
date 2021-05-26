@@ -27,6 +27,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { UpdateThemeComponent } from './update-theme/update-theme.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     ResponsesComponent,
     AddThemeComponent,
     LevelComponent,
-    AddLevelComponent
+    AddLevelComponent,
+    UpdateThemeComponent
   ],
   imports: [
     BrowserModule,
