@@ -18,7 +18,7 @@
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item"  *ngIf="currentUser != null" [routerLink]="['/profile',currentUser?.id]">User Profile</a>
-                  <a class="dropdown-item" routerLink="/register">Register</a>
+<!--                  <a class="dropdown-item" routerLink="/register">Register</a>-->
                   <a class="dropdown-item" (click)="logout()" *ngIf="currentUser">Log Out</a>
                 </div>
               </div>
@@ -116,7 +116,7 @@
         •Create static Class Members  <br>
 
         •Use enums </p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history/:userUsername"  *ngIf="currentUser">Play</a>
     </div>
     <div class="item service-item">
       <div class="icon">
@@ -142,7 +142,7 @@
         •Develop Constructors <br>
 
         •Use static Members</p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history/:userUsername"  *ngIf="currentUser">Play</a>
     </div>
     <div class="item service-item">
       <div class="icon">
@@ -159,7 +159,7 @@
         • Understand Object Lifecycle and Garbage <br>
         Collection
         .Two-Minute Drill</p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history/:userUsername"  *ngIf="currentUser">Play</a>
     </div>
     <div class="item service-item">
       <div class="icon">
@@ -169,7 +169,7 @@
       <p>Using Java Operators
         •     Use Parentheses to Override OperatorPrecedence <br>
         •     Test Equality Between Strings and OtherObjects Using == and equals( )</p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history"  *ngIf="currentUser">Play</a>
     </div>
     <div class="item service-item">
       <div class="icon">
@@ -184,7 +184,7 @@
         • State the Effects of Exceptions  <br>
         • Recognize Common Exceptions
       </p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history/:userUsername"  *ngIf="currentUser">Play</a>
     </div>
     <div class="item service-item">
       <div class="icon">
@@ -204,31 +204,31 @@
         • Use Encapsulation for Reference Variables <br>
         • Use Simple Lambda Expressions
       </p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
+      <a href="#" class="main-button" routerLink="/history/:userUsername"  *ngIf="currentUser">Play</a>
     </div>
   </div>
 </section>
 
 
-<!-- modal -->
-<div class="row">
-  <div class="modal" id="myModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Choose Level</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-level-list></app-level-list>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" routerLink="/home">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash; modal &ndash;&gt;-->
+<!--<div class="row">-->
+<!--  <div class="modal" id="myModal" tabindex="-1" role="dialog">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--      <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title">Choose Level</h5>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <app-level-list></app-level-list>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-primary" routerLink="/home">Save changes</button>-->
+<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
