@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
+import {LoginService} from '../service/login.service';
+import {UserToken} from '../model/user-token';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,14 @@ import {UserService} from "../service/user.service";
 export class HomeComponent implements OnInit {
   adminUsername = '';
   userUsername = '';
-  constructor(private userService: UserService) { }
+  currentUser: UserToken;
+  constructor(private userService: UserService,
+              private loginService : LoginService,
+              private router : Router) {
+    this.loginService.currentUser.subscribe(value => {
+      this.currentUser = value;
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -30,5 +39,9 @@ export class HomeComponent implements OnInit {
       this.userService.saveUsername(userUsername);
        window.location.replace(`/history/${userUsername}`);
     }
+  }
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 }

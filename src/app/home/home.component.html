@@ -1,4 +1,40 @@
 
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <a href="#" class="logo">OCA CHALLENGE</a>
+          <ul class="nav">
+            <li class="scroll-to-section"><a  routerLink="/home" class="active">Home</a></li>
+            <li class="scroll-to-section"><a href="#about">About</a></li>
+            <li class="scroll-to-section"><a href="#services">QUIZ</a></li>
+
+            <div class="main-menu d-none d-lg-block">
+              <div class="btn-group">
+                <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <li><a routerLink="/login" *ngIf="!currentUser">Login</a></li>
+                  <li><a routerLink="#" *ngIf="currentUser">{{currentUser.username}}</a>
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item"  *ngIf="currentUser != null" [routerLink]="['/profile',currentUser?.id]">User Profile</a>
+                  <a class="dropdown-item" routerLink="/register">Register</a>
+                  <a class="dropdown-item" (click)="logout()" *ngIf="currentUser">Log Out</a>
+                </div>
+              </div>
+            </div>
+          </ul>
+          <!--            <li class="scroll-to-section"><a href="#frequently-question">Register</a></li>-->
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--<app-home1></app-home1>-->
 <div class="welcome-area" id="welcome">
   <div class="header-text">
     <div class="container">
@@ -62,26 +98,24 @@
   <div class="container">
     <div class="row" style="justify-content: center">
       <h2 style="color:black;">Quiz</h2>
-      <!--            <i><img src="assets/images/service-icon-01.png" alt=""></i>-->
     </div>
     <div class="item service-item">
       <div class="icon">
         <i><img src="assets/images/service-icon-02.png" alt=""></i>
       </div>
       <h5 class="service-title">Chapter 1 : Declarations and Access Control</h5>
-      <p>Identifiers and Keywords <br>
+      <p>.Identifiers and Keywords <br>
 
-        javac, java, main(), and Imports  <br>
+        •javac, java, main(), and Imports  <br>
+        •Declare Classes and Interfaces  <br>
 
-        Declare Classes and Interfaces  <br>
+        •Declare Class Members  <br>
 
-        Declare Class Members  <br>
+        •Declare Constructors and Arrays  <br>
 
-        Declare Constructors and Arrays  <br>
+        •Create static Class Members  <br>
 
-        Create static Class Members  <br>
-
-        Use enums </p>
+        •Use enums </p>
       <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
     </div>
     <div class="item service-item">
@@ -91,23 +125,23 @@
       <h5 class="service-title">Chapter 2: Object Orientation</h5>
       <p>Describe Encapsulation <br>
 
-        Implement Inheritance <br>
+        •Implement Inheritance <br>
 
-        Use IS-A and HAS-A Relationships (OCP) <br>
+        •Use IS-A and HAS-A Relationships (OCP) <br>
 
-        Use Polymorphism <br>
+        •Use Polymorphism <br>
 
-        Use Overriding and Overloading <br>
+        •Use Overriding and Overloading <br>
 
-        Understand Casting <br>
+        •Understand Casting <br>
 
-        Use Interfaces <br>
+        .Use Interfaces <br>
 
-        Understand and Use Return Types <br>
+        •Understand and Use Return Types <br>
 
-        Develop Constructors <br>
+        •Develop Constructors <br>
 
-        Use static Members</p>
+        •Use static Members</p>
       <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
     </div>
     <div class="item service-item">
@@ -124,7 +158,7 @@
         Methods
         • Understand Object Lifecycle and Garbage <br>
         Collection
-        Two-Minute Drill</p>
+        .Two-Minute Drill</p>
       <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
     </div>
     <div class="item service-item">
@@ -172,23 +206,6 @@
       </p>
       <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
     </div>
-    <div class="item service-item">
-      <div class="icon">
-        <i><img src="assets/images/service-icon-01.png" alt=""></i>
-      </div>
-      <h5 class="service-title">Chapter 7: Practice for OCA certification exam</h5>
-      <p>When learn for the exam <br>
-        Learn to PASS score at 100% <br>
-        Self-explain all two-minute drills, write it aside <br>
-        Self-explain all failed quiz, write it aside <br>
-        Self-explain all not-sure passed quiz, write it aside <br>
-        Using a dummy program to conduct experiments <br>
-        Do a lot of mock exams <br>
-        When sheduling the exam <br>
-        Schedule it soon as when you finish the course <br>
-        Schedule it morning</p>
-      <a href="#" class="main-button" data-toggle="modal" data-target="#myModal">Play</a>
-    </div>
   </div>
 </section>
 
@@ -199,7 +216,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Choose Level</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -208,7 +225,7 @@
           <app-level-list></app-level-list>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" routerLink="/home">Save changes</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
