@@ -1,9 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Response} from '../model/Response';
-import {QuestionService} from '../service/question.service';
+// import {QuestionService} from '../service/question.service';
 import {ResponseService} from '../service/response.service';
 import {Question} from '../model/Question';
+import {QuestionService} from '../service/question.service';
 
 @Component({
   selector: 'app-add-question',

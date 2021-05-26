@@ -12,6 +12,7 @@ export class ThemeService {
   constructor(private http: HttpClient) { }
 
   public addTheme(theme: Theme): Observable<Theme> {
+
   return this.http.post<Theme>(`http://localhost:8080/api/addTheme`, theme);
 }
   public getThemes(): Observable<Theme[]> {

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddQuestionComponent } from '../add-question/add-question.component';
 import { RegisterComponent } from '../register/register.component';
+import {UserService} from '../service/user.service';
+import {LoginService} from '../service/login.service';
+import {Router} from '@angular/router';
+import {UserToken} from '../model/user-token';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +15,15 @@ import { RegisterComponent } from '../register/register.component';
 export class HeaderComponent implements OnInit {
 
   dialogRef: any;
-
-  constructor(private dialog: MatDialog ) {}
+  currentUser: UserToken;
+  constructor(private dialog: MatDialog,
+              private userService: UserService,
+              private loginService : LoginService,
+              private router : Router) {
+    this.loginService.currentUser.subscribe(value => {
+      this.currentUser = value;
+    })
+  }
 
     // tslint:disable-next-line: typedef
     public openRegister() {

@@ -8,13 +8,18 @@
     <div class="col-lg-4" style="position: relative;">
      <h1 style="position: absolute; bottom: 80px;">Only One Answer <br> Is Correct: </h1>
    </div>
-   <div class="col-lg-2" id="loginBtn">
-     <button class="btn btn-primary btn-lg" style="background: #64379f !important;
-     color: #fff; border: 0;" (click)="openRegister()">Sign Up</button>
-     <br>
-     <button class="btn btn-primary btn-lg" style="   background: #64379f !important;
-     color: #fff; border: 0; margin-top: 5px;" routerLink="/home">Sign in</button>
-   </div>
+  <div class="col-lg-2" id="loginBtn" style="text-align: center">
+    <div class="container emp-profile">
+      <form method="post">
+        <div class="row">
+            <div class="profile-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+              <label>User Name :</label><a routerLink="#" *ngIf="currentUser">{{currentUser.username}}</a>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
   <br>
 
   </div>
