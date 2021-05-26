@@ -1,9 +1,9 @@
 
 .bg-light{
+  background-image: url('src/assets/New folder/banner.jpg');
   height: 100%;
   align-content: center;
   padding-top: 120px;
-  background-image: url('src/assets/New folder/banner.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
