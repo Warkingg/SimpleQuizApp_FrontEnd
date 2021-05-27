@@ -1,4 +1,4 @@
-<div id="main-container">
+<div id="main-container" >
   <div class="card">
 
     <div class="list-group">
@@ -26,6 +26,7 @@
         <p style="color: red">{{q?.response1}}</p>
         <p style="color: red">{{q?.response2}}</p>
         <p style="color: red">{{q?.response3}}</p>
+        <p style="color: red">{{q?.response4}}</p>
         <p *ngIf="q.correct==q?.response1" style="color: olivedrab">Correct answer:  {{q?.response1}}</p>
         <p *ngIf="q.correct==q?.response2" style="color: olivedrab">Correct answer:  {{q?.response2}}</p>
         <p *ngIf="q.correct==q?.response3" style="color: olivedrab">Correct answer:  {{q?.response3}}</p>
@@ -36,28 +37,78 @@
   <div class="modal fade" id="updateQuestionModal" tabindex="-1" role="dialog" aria-labelledby="questionEditModalLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateQuestionModalLabel">Edit level nam is {{editQuestion?.question}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <div class="modal-content" style="height: 355px">
+        <form #editQuestionForm="ngForm" (ngSubmit)="onUpdateQuestion(editQuestionForm.value)">
+          <input type="hidden" [(ngModel)]="editQuestion.id" name="id">
+        <div class="form-group row modal-header" style="margin-right: 5px">
+          <!--          <h5 class="modal-title" id="updateQuestionModalLabel"></h5>-->
+          <div class="col-form-label">
+            <label for="name" style="padding-left: 25px">Question</label>
+          </div>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="name" [(ngModel)]="editQuestion.question" name="question">
+          </div>
         </div>
-        <div class="modal-body">
-          <form #editForm="ngForm">
-            <div class="form-group">
-              <label for="name" class="font-weight-bold">Difficulty</label>
-              <input type="text" ngModel="{{editQuestion?.question}}" name="name" class="form-control" id="name"
-                     aria-describedby="emailHelp" placeholder="Name">
+        <fieldset class="form-group" id="response">
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="editQuestion.correct" name="correct">
+          <div class="row">
+
+            <div class="col-md-11" style="padding-left: 35px">
+              <label for="response1" class="col-form-label">Answer</label>
+              <mat-radio-button class="col-sm-9" [(ngModel)]="editQuestion.correct">
+                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response1" name="response1"
+                       placeholder="First answer" id="response1" style="width: 330px">
+              </mat-radio-button>
             </div>
-            <input type="hidden" ngModel="{{editQuestion?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-            <div class="modal-footer">
-              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-              <button (click)="onUpdateQuestion(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes
-              </button>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <mat-radio-button [(ngModel)]="editQuestion.correct">
+                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response2" name="response2"
+                       placeholder="First answer" id="response2" style="width: 330px">
+              </mat-radio-button>
             </div>
-          </form>
+            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <mat-radio-button [(ngModel)]="editQuestion.correct">
+                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response3" name="response3"
+                       placeholder="First answer" id="response3" style="width: 330px">
+              </mat-radio-button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <mat-radio-button [(ngModel)]="editQuestion.correct">
+                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response4" name="response4"
+                       placeholder="First answer" id="response4" style="width: 330px">
+              </mat-radio-button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+          </mat-radio-group>
+        </fieldset>
+
+        <select name="level" id="level" [(ngModel)]="editQuestion.level">
+          <option *ngFor="let level of levels" [ngValue]="level">{{level.difficulty}}</option>
+        </select>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-danger">Cancel</button>
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Edit</button>
+          </div>
+          <div class="col-md-2"></div>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -77,7 +128,8 @@
           <p>Are you sure you want to delete theme name is  {{deleteQuestion?.question}}?</p>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button (click)="onDeleteQuestion(deleteQuestion?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            <button (click)="onDeleteQuestion(deleteQuestion?.id)" class="btn btn-danger" data-dismiss="modal">Yes
+            </button>
           </div>
         </div>
       </div>

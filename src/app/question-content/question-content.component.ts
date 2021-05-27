@@ -1,7 +1,7 @@
-import { AddThemeComponent } from './../add-theme/add-theme.component';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { RegisterComponent } from '../register/register.component';
+import {AddThemeComponent} from './../add-theme/add-theme.component';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {RegisterComponent} from '../register/register.component';
 import {Question} from '../model/Question';
 import {QuestionService} from '../service/question.service';
 import {ActivatedRoute} from '@angular/router';
@@ -9,6 +9,7 @@ import {Response} from '../model/Response';
 import {ResponseService} from '../service/response.service';
 import {Level} from '../model/Level';
 import {HttpErrorResponse} from '@angular/common/http';
+import {LevelService} from '../service/level.service';
 
 @Component({
   selector: 'app-question-content',
@@ -20,12 +21,13 @@ export class QuestionContentComponent implements OnInit {
   responses: Response[];
   dialogRef: any;
   id: number;
-  public editQuestion: Question;
-  public deleteQuestion: Question;
-  public showQuestion: Question;
+  levels: Level[] = [];
+  editQuestion: Question;
+  deleteQuestion: Question;
+  showQuestion: Question;
 
   constructor(private dialog: MatDialog, private questionService: QuestionService, private route: ActivatedRoute,
-              private responseService: ResponseService) {
+              private responseService: ResponseService, private levelService: LevelService) {
     this.route.params.subscribe(
       params => {
         this.id = this.route.snapshot.params.id;
@@ -37,6 +39,9 @@ export class QuestionContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.levelService.getAllLevel().subscribe(levels => {
+      this.levels = levels;
+    });
   }
 
   public openRegister() {
@@ -50,6 +55,7 @@ export class QuestionContentComponent implements OnInit {
       this.responses = res;
     });
   }
+
   public getQuestion(): void {
     this.questionService.getQuestions(this.id).subscribe(
       (response: Question[]) => {
@@ -61,11 +67,12 @@ export class QuestionContentComponent implements OnInit {
       }
     );
   }
+
   public onUpdateQuestion(question: Question): void {
-    this.questionService.updateQuestion(question).subscribe(
+    this.questionService.updateQuestion(question, question.id).subscribe(
       (response: Question) => {
         console.log(response);
-        this.getQuestion()
+        this.getQuestion();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -84,29 +91,34 @@ export class QuestionContentComponent implements OnInit {
       }
     );
   }
-  public onOpenModal(question:Question, mode: string): void {
+
+  public onOpenModal(question: Question, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-target', '#addLevelModal');
+      button.setAttribute('data-target', '#addQuestionModal');
     }
     if (mode === 'edit') {
       this.editQuestion = question;
-      button.setAttribute('data-target', '#updateLevelModal');
+      button.setAttribute('data-target', '#updateQuestionModal');
     }
     if (mode === 'delete') {
       this.deleteQuestion = question;
-      button.setAttribute('data-target', '#deleteLevelModal');
+      button.setAttribute('data-target', '#deleteQuestionModal');
     }
     if (mode === 'show') {
       this.showQuestion = question;
-      button.setAttribute('data-target', '#showLevelModal');
+      button.setAttribute('data-target', '#showQuestionModal');
     }
     container.appendChild(button);
     button.click();
+  }
+
+  cancel() {
+    this.dialog.closeAll();
   }
 }
 

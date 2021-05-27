@@ -1,3 +1,5 @@
+import {Level} from './Level';
+
 export interface Question {
   question: string;
   id: number;
@@ -6,4 +8,5 @@ export interface Question {
   response3: string;
   response4: string;
   correct: string;
+  level: Level;
 }
