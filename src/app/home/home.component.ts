@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 import {LoginService} from '../service/login.service';
 import {UserToken} from '../model/user-token';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import {UserToken} from '../model/user-token';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  loginForm: FormGroup = new FormGroup({
+  });
   adminUsername = '';
   userUsername = '';
   currentUser: UserToken;

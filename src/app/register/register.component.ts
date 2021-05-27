@@ -3,7 +3,7 @@ import {RegisterService} from '../service/register.service';
 import {User} from '../model/user';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,9 +22,21 @@ export class RegisterComponent implements OnInit {
     let user = form.value;
     this.registerService.register(user).subscribe(abc=>{
       this.router.navigate(['/login']);
-      alert("Successfully Registration");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Successfully Registration",
+        showConfirmButton: false,
+        timer: 1500
+      })
     },error => {
-      alert("Fail to Registration")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: "Fail to Registration",
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
   }
 }

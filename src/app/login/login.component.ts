@@ -3,7 +3,7 @@ import {LoginService} from '../service/login.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,10 +27,24 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
           this.router.navigateByUrl('/home');
-          alert("Successfully Login");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "Successfully Login",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.router.navigateByUrl('/home');
         },
+
         error => {
-          alert("Fail to Login")
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Fail to Login",
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.loading = false;
         });
     this.checkLogin != this.checkLogin;

@@ -5,7 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../service/login.service';
 import {ChangePasswordService} from '../service/change-password.service';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -38,11 +38,23 @@ export class ChangePasswordComponent implements OnInit {
   updatePassword() {
     const user = this.setNewUser();
     this.changePassword.newPassword(user, this.currentUser.id).subscribe(() => {
-      alert('Đổi mật khẩu thành công');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Successfully ChangePassword",
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.newPasswordForm.reset();
       this.router.navigate(['/login']);
     }, err => {
-      alert("thất bại")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: "Fail ChangePassword",
+        showConfirmButton: false,
+        timer: 1500
+      })
     });
     console.log(user);
   }
