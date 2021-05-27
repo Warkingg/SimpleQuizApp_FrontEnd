@@ -54,10 +54,11 @@ import {ProfileComponent} from './profile/profile.component';
     LevelComponent,
     AddLevelComponent,
     UpdateThemeComponent,
+    UpdateThemeComponent,
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

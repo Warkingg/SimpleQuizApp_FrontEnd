@@ -7,6 +7,9 @@ import {AddLevelComponent} from '../level/add-level/add-level.component';
 import {UpdateThemeComponent} from '../update-theme/update-theme.component';
 import {Question} from '../model/Question';
 import {HttpErrorResponse} from '@angular/common/http';
+import {UserToken} from '../model/user-token';
+import {LoginService} from '../service/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -19,8 +22,13 @@ export class QuestionsComponent implements OnInit {
   public editTheme: Theme;
   public deleteTheme: Theme;
   public showTheme: Theme;
+  currentUser: UserToken;
 
-  constructor(private dialog: MatDialog, private themeService: ThemeService) {}
+  constructor(private dialog: MatDialog, private themeService: ThemeService,private loginService : LoginService,private router : Router) {
+    this.loginService.currentUser.subscribe(value => {
+      this.currentUser = value;
+    })
+  }
 
   ngOnInit(): void {
     this.themeService.getThemes().subscribe(themes => {
@@ -116,5 +124,9 @@ export class QuestionsComponent implements OnInit {
     }
     container.appendChild(button);
     button.click();
+  }
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 }

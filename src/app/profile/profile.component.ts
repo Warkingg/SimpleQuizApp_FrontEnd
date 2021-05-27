@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {LoginService} from '../service/login.service';
+import {UserToken} from '../model/user-token';
 
 @Component({
   selector: 'app-profile',
@@ -20,11 +21,15 @@ export class ProfileComponent implements OnInit {
     phoneNumber: new FormControl(),
     email: new FormControl()
   });
+  currentUser: UserToken;
   constructor(private activatedRouter: ActivatedRoute,
-              private loginService : LoginService) {
+              private loginService : LoginService ) {
     this.activatedRouter.paramMap.subscribe(paramMap =>{
       const id = +paramMap.get("id");
       this.getUserById(id);
+      this.loginService.currentUser.subscribe(value => {
+        this.currentUser = value;
+      })
     })
   }
 
