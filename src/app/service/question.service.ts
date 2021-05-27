@@ -19,8 +19,8 @@ export class QuestionService {
   public getQuestions(idLevel: number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8080/api/getQuestions/${idLevel}`, );
   }
-  public updateQuestion(question: Question): Observable<Question> {
-    return this.http.put<Question>(`http://localhost:8080/api/updateQuestion`, question);
+  public updateQuestion(question: Question, id: number): Observable<Question> {
+    return this.http.put<Question>(`http://localhost:8080/api/updateQuestion/${id}`, question);
   }
 
   public deleteQuestion(questionId: number): Observable<void> {

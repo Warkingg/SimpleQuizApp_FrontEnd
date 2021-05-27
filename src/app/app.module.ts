@@ -33,6 +33,7 @@ import {LoginComponent} from './login/login.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
+import {UpdateThemeComponent} from './update-theme/update-theme.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { ProfileComponent } from './profile/profile.component';
     AddThemeComponent,
     LevelComponent,
     AddLevelComponent,
-    UpdateThemeComponent
+    UpdateThemeComponent,
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,

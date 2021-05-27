@@ -20,7 +20,7 @@ export class ResultComponent implements OnInit {
     this.levelName = this.data.levelName;
     this.themeName = this.data.themeName;
   }
-  // tslint:disable-next-line: typedef
+
   dismissPanel() {
   this.dialog.closeAll();
   }
