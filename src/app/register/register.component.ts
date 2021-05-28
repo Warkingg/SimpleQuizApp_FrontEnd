@@ -4,6 +4,7 @@ import {User} from '../model/user';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import {NotificationService} from '../notification.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +13,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js'
 export class RegisterComponent implements OnInit {
   user: User = {};
   constructor(private registerService : RegisterService,
-              private router :Router) { }
+              private router :Router,
+              private notification : NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -22,21 +24,9 @@ export class RegisterComponent implements OnInit {
     let user = form.value;
     this.registerService.register(user).subscribe(abc=>{
       this.router.navigate(['/login']);
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: "Successfully Registration",
-        showConfirmButton: false,
-        timer: 1500
-      })
+      this.notification.showSuccessPopup("success", "Success Register")
     },error => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: "Fail to Registration",
-        showConfirmButton: false,
-        timer: 1500
-      })
+      this.notification.showSuccessPopup("error", "Success Register")
     })
   }
 }
