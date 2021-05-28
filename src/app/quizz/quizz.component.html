@@ -7,7 +7,6 @@
         </div>
      </div>
 
-
     <div class="row">
         <div class="col-lg-7">
             <button class="btn btn-danger" style="background: #64379f; border: 0; margin-top: 10px;">
@@ -26,8 +25,7 @@
 
 <div style="padding: 16px;" *ngFor="let q of questions">
   <div class="card" id="quizz" style="width: 70rem;">
-     <h4>{{q.question}} ...?</h4>
-
+<textarea cols="3" rows="8" style="border: none">{{q.question}}</textarea>
     <mat-radio-group aria-label="Select an option" (change)="setResponses($event)">
       <mat-radio-button [value]="q.response1">{{q.response1}}</mat-radio-button> <br>
       <mat-radio-button [value]="q.response2">{{q.response2}}</mat-radio-button> <br>
