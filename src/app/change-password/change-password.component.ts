@@ -5,7 +5,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../service/login.service';
 import {ChangePasswordService} from '../service/change-password.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 import {NotificationService} from '../notification.service';
 @Component({
   selector: 'app-change-password',

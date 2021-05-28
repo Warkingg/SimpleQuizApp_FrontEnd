@@ -37,7 +37,7 @@
   <div class="modal fade" id="updateQuestionModal" tabindex="-1" role="dialog" aria-labelledby="questionEditModalLabel"
        aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="height: 355px">
+      <div class="modal-content" style="height: 400px">
         <form #editQuestionForm="ngForm" *ngIf="editQuestion!=null"
               (ngSubmit)="onUpdateQuestion(editQuestionForm.value)">
           <input type="hidden" [(ngModel)]="editQuestion.id" name="id">
@@ -98,14 +98,14 @@
             </mat-radio-group>
           </fieldset>
 
-          <select name="level" id="level" [(ngModel)]="editQuestion.level">
+          <select name="level" id="level" [(ngModel)]="editQuestion.level" style="margin-left: 116px; width: 125px; margin-bottom: 20px;">
             <option *ngFor="let level of levels" [ngValue]="level" >{{level.difficulty}}</option>
           </select>
 
           <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-              <button type="button" class="btn btn-danger">Cancel</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
             <div class="col-md-4">
               <button type="submit" class="btn btn-primary">Edit</button>
