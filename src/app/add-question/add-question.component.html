@@ -2,23 +2,11 @@
   <h2 style="margin-bottom: 30px;">Create a Question </h2>
   <br><br>
   <form (ngSubmit)="addQuestion()">
-    <!--
-            <div class="form-group ">
-                <div class="form-group row">
-                    <label for="theme" class="col-sm-3 col-form-label">Thème</label>
-                    <div class="col-sm-9">
-                        <select class="form-control" id="theme">
-                            <option selected>Thèmes</option>
-                            <option>...</option>
-                          </select>
-                    </div>
-                  </div>
-              </div>
-    -->
     <div class="form-group row">
       <label for="name" class="col-sm-3 col-form-label">Question</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="name" [(ngModel)]="question.question" name="name">
+<!--        <input type="text" class="form-control" id="name" [(ngModel)]="question.question" name="name">-->
+        <textarea rows="8" cols="3" style="border: none" type="text" class="form-control" id="name" [(ngModel)]="question.question" name="name"> </textarea>
       </div>
     </div>
 
