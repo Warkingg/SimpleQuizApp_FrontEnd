@@ -50,11 +50,11 @@ export class QuestionContentComponent implements OnInit {
     });
   }
 
-  findResponse(id: number) {
-    this.responseService.getResponses(id).subscribe(res => {
-      this.responses = res;
-    });
-  }
+  // findResponse(id: number) {
+  //   this.responseService.getResponses(id).subscribe(res => {
+  //     this.responses = res;
+  //   });
+  // }
 
   public getQuestion(): void {
     this.questionService.getQuestions(this.id).subscribe(

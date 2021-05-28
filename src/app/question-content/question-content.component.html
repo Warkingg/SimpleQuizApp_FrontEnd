@@ -1,4 +1,4 @@
-<div id="main-container" >
+<div id="main-container">
   <div class="card">
 
     <div class="list-group">
@@ -10,7 +10,7 @@
 
   <mat-accordion>
     <mat-expansion-panel *ngFor="let q of questions, let i = index">
-      <mat-expansion-panel-header (click)="findResponse(q.id)">
+      <mat-expansion-panel-header>
         <mat-panel-title>
           {{i + 1}}
         </mat-panel-title>
@@ -38,76 +38,80 @@
        aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="height: 355px">
-        <form #editQuestionForm="ngForm" (ngSubmit)="onUpdateQuestion(editQuestionForm.value)">
+        <form #editQuestionForm="ngForm" *ngIf="editQuestion!=null"
+              (ngSubmit)="onUpdateQuestion(editQuestionForm.value)">
           <input type="hidden" [(ngModel)]="editQuestion.id" name="id">
-        <div class="form-group row modal-header" style="margin-right: 5px">
-          <!--          <h5 class="modal-title" id="updateQuestionModalLabel"></h5>-->
-          <div class="col-form-label">
-            <label for="name" style="padding-left: 25px">Question</label>
+          <div class="form-group row modal-header" style="margin-right: 5px">
+            <div class="col-form-label">
+              <label for="name" style="padding-left: 25px">Question</label>
+            </div>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="name" [(ngModel)]="editQuestion.question" name="question">
+            </div>
           </div>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="name" [(ngModel)]="editQuestion.question" name="question">
-          </div>
-        </div>
-        <fieldset class="form-group" id="response">
-          <mat-radio-group aria-label="Select an option" [(ngModel)]="editQuestion.correct" name="correct">
-          <div class="row">
+          <fieldset class="form-group" id="response">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="editQuestion.correct" name="correct">
+              <div class="row">
 
-            <div class="col-md-11" style="padding-left: 35px">
-              <label for="response1" class="col-form-label">Answer</label>
-              <mat-radio-button class="col-sm-9" [(ngModel)]="editQuestion.correct">
-                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response1" name="response1"
-                       placeholder="First answer" id="response1" style="width: 330px">
-              </mat-radio-button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <mat-radio-button [(ngModel)]="editQuestion.correct">
-                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response2" name="response2"
-                       placeholder="First answer" id="response2" style="width: 330px">
-              </mat-radio-button>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <mat-radio-button [(ngModel)]="editQuestion.correct">
-                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response3" name="response3"
-                       placeholder="First answer" id="response3" style="width: 330px">
-              </mat-radio-button>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <mat-radio-button [(ngModel)]="editQuestion.correct">
-                <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response4" name="response4"
-                       placeholder="First answer" id="response4" style="width: 330px">
-              </mat-radio-button>
-            </div>
-            <div class="col-md-3"></div>
-          </div>
-          </mat-radio-group>
-        </fieldset>
+                <div class="col-md-11" style="padding-left: 35px">
+                  <label for="response1" class="col-form-label">Answer</label>
+                  <mat-radio-button class="col-sm-9" name="correct" [value]="editQuestion.response1" [checked]="editQuestion.correct == editQuestion.response1">
+                    <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response1"
+                           name="response1"
+                           placeholder="First answer" id="response1" style="width: 330px">
+                  </mat-radio-button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                  <mat-radio-button name="correct" [value]="editQuestion.response2" [checked]="editQuestion.correct == editQuestion.response2">
+                    <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response2"
+                           name="response2"
+                           placeholder="Second answer" id="response2" style="width: 330px">
+                  </mat-radio-button>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                  <mat-radio-button name="correct" [value]="editQuestion.response3" [checked]="editQuestion.correct == editQuestion.response3">
+                    <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response3"
+                           name="response3"
+                           placeholder="Thirst answer" id="response3" style="width: 330px">
+                  </mat-radio-button>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                  <mat-radio-button name="correct" [value]="editQuestion.response4" [checked]="editQuestion.correct == editQuestion.response4">
+                    <input type="text" class="form-control form-control-md" [(ngModel)]="editQuestion.response4"
+                           name="response4"
+                           placeholder="First answer" id="response4" style="width: 330px">
+                  </mat-radio-button>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </mat-radio-group>
+          </fieldset>
 
-        <select name="level" id="level" [(ngModel)]="editQuestion.level">
-          <option *ngFor="let level of levels" [ngValue]="level">{{level.difficulty}}</option>
-        </select>
+          <select name="level" id="level" [(ngModel)]="editQuestion.level">
+            <option *ngFor="let level of levels" [ngValue]="level" >{{level.difficulty}}</option>
+          </select>
 
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-4">
-            <button type="button" class="btn btn-danger">Cancel</button>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-2"></div>
           </div>
-          <div class="col-md-4">
-            <button type="submit" class="btn btn-primary">Edit</button>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
         </form>
       </div>
     </div>
