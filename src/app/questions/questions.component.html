@@ -2,7 +2,7 @@
 <div class="row" id="main-container">
     <div class="col-lg-3">
         <div id="sideBar">
-            <div class="card" style="width: 18rem; cursor: pointer; margin-left: 60px; " routerLink="/home">
+            <div class="card" style="width: 18rem; cursor: pointer; " routerLink="/home">
                 <img class="card-img-top img-thumbnail" src="https://media.discordapp.net/attachments/747757123055910982/747774704437166080/download.png" alt="Card image cap">
               </div>
               <h3 style="margin: 18px 0 -12px 15px;">Quizz</h3>
@@ -82,7 +82,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete theme name is  {{deleteTheme?.name}}?</p>
+          <p>Are you sure you want to delete theme name is:{{deleteTheme?.name}}?</p>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             <button (click)="onDeleteTheme(deleteTheme?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>

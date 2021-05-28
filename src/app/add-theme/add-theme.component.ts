@@ -14,7 +14,7 @@ export class AddThemeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // tslint:disable-next-line:typedef
+
   addTheme() {
     this.themeService.addTheme(this.theme).subscribe(theme => {
       this.theme = theme;

@@ -1,53 +1,59 @@
-<div class="card addQuestion" >
-    <h2 style="margin-bottom: 30px;">Create a Question </h2>
-    <br><br>
-    <form (ngSubmit)="addQuestion()">
-<!--
-        <div class="form-group ">
-            <div class="form-group row">
-                <label for="theme" class="col-sm-3 col-form-label">Thème</label>
-                <div class="col-sm-9">
-                    <select class="form-control" id="theme">
-                        <option selected>Thèmes</option>
-                        <option>...</option>
-                      </select>
-                </div>
+<div class="card addQuestion">
+  <h2 style="margin-bottom: 30px;">Create a Question </h2>
+  <br><br>
+  <form (ngSubmit)="addQuestion()">
+    <!--
+            <div class="form-group ">
+                <div class="form-group row">
+                    <label for="theme" class="col-sm-3 col-form-label">Thème</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="theme">
+                            <option selected>Thèmes</option>
+                            <option>...</option>
+                          </select>
+                    </div>
+                  </div>
               </div>
-          </div>
--->
-      <div class="form-group row">
-        <label for="name" class="col-sm-3 col-form-label">Question</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="name" [(ngModel)]="question.question" name="name">
-        </div>
+    -->
+    <div class="form-group row">
+      <label for="name" class="col-sm-3 col-form-label">Question</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="name" [(ngModel)]="question.question" name="name">
       </div>
+    </div>
 
-      <fieldset class="form-group" id="response">
-        <div class="row">
-            <legend class="col-form-label col-sm-4 pt-0">Check correct answer</legend>
-          <mat-radio-group aria-label="Select an option" [(ngModel)]="correct" name="gender" (ngModelChange)="setResponse()">
-            <mat-radio-button value="{{question.response1}}" style="margin-left: 10px;">
-              <input type="text" class="form-control form-control-md" [(ngModel)]="question.response1" name="response1" placeholder="First answer">
-            </mat-radio-button>
-            <br>
-            <mat-radio-button value="{{question.response2}}" style="margin-left: 10px;">
-              <input type="text" class="form-control form-control-md" [(ngModel)]="question.response2" name="response2" placeholder="Second answer">
-            </mat-radio-button> <br>
-            <mat-radio-button value="{{question.response3}}" style="margin-left: 10px;">
-              <input type="text" class="form-control form-control-md" [(ngModel)]="question.response3" name="response3" placeholder="Third answer">
-            </mat-radio-button> <br>
-            <mat-radio-button value="{{question.response4}}" style="margin-left: 10px;">
-              <input type="text" class="form-control form-control-md" [(ngModel)]="question.response4" name="response3" placeholder="Fourth answer">
-            </mat-radio-button>
-          </mat-radio-group>
+    <fieldset class="form-group" id="response">
+      <div class="row">
+        <legend class="col-form-label col-sm-4 pt-0">Check correct answer</legend>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="correct" name="gender"
+                         (ngModelChange)="setResponse()">
+          <mat-radio-button value="{{question.response1}}" style="margin-left: 10px;">
+            <input type="text" class="form-control form-control-md" [(ngModel)]="question.response1" name="response1"
+                   placeholder="First answer">
+          </mat-radio-button>
+          <br>
+          <mat-radio-button value="{{question.response2}}" style="margin-left: 10px;">
+            <input type="text" class="form-control form-control-md" [(ngModel)]="question.response2" name="response2"
+                   placeholder="Second answer">
+          </mat-radio-button>
+          <br>
+          <mat-radio-button value="{{question.response3}}" style="margin-left: 10px;">
+            <input type="text" class="form-control form-control-md" [(ngModel)]="question.response3" name="response3"
+                   placeholder="Third answer">
+          </mat-radio-button>
+          <br>
+          <mat-radio-button value="{{question.response4}}" style="margin-left: 10px;">
+            <input type="text" class="form-control form-control-md" [(ngModel)]="question.response4" name="response3"
+                   placeholder="Fourth answer">
+          </mat-radio-button>
+        </mat-radio-group>
 
-        </div>
-      </fieldset>
-
-      <div class="btnContent">
-        <button type="submit" class="btn btn-danger" style="margin-right: 5px" (click)="cancel()">
-        Cancel</button>
-        <button type="submit" class="btn btn-primary" style="margin-right: 5px">Confirm</button>
       </div>
-    </form>
-  </div>
+    </fieldset>
+
+    <div class="btnContent">
+      <button type="button" class="btn btn-danger" style="margin-right: 5px" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" style="margin-right: 5px">Confirm</button>
+    </div>
+  </form>
+</div>
