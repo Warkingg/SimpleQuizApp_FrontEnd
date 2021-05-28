@@ -4,8 +4,6 @@ import {UserService} from "../service/user.service";
 import {LoginService} from '../service/login.service';
 import {UserToken} from '../model/user-token';
 import {FormControl, FormGroup} from '@angular/forms';
-import { CountdownComponent } from 'ngx-countdown';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -52,3 +50,4 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 }
+
