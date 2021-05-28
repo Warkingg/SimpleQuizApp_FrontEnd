@@ -15,6 +15,7 @@ export class ThemeContentComponent implements OnInit {
   id: number;
   idLevel: number;
   userName: string;
+  minute: number = 1;
 
   constructor(private levelService: LevelService, private route: ActivatedRoute, private userService: UserService) {
     this.route.params.subscribe(
@@ -35,4 +36,5 @@ export class ThemeContentComponent implements OnInit {
     this.idLevel = e;
     console.log(this.idLevel);
   }
+
 }

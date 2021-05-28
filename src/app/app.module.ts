@@ -34,8 +34,6 @@ import {LoginComponent} from './login/login.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
-import {UpdateThemeComponent} from './update-theme/update-theme.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +57,7 @@ import {UpdateThemeComponent} from './update-theme/update-theme.component';
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +80,7 @@ import {UpdateThemeComponent} from './update-theme/update-theme.component';
   entryComponents: [
     AddQuestionComponent,
     AddThemeComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]
