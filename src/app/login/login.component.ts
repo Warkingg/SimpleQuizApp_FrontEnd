@@ -3,7 +3,10 @@ import {LoginService} from '../service/login.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import {NotificationService} from '../notification.service';
+declare var $:any;
+declare var Swal:any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +21,9 @@ export class LoginComponent implements OnInit {
   error = '';
   loading = false;
   constructor(private loginService : LoginService,
-              private router: Router) { }
+              private router: Router,
+              private notification :NotificationService
+  ) { }
 
   ngOnInit() {
   }
@@ -27,12 +32,16 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
           this.router.navigateByUrl('/home');
-          alert("Successfully Login");
+          this.notification.showSuccessPopup('success','Success Login')
         },
         error => {
-          alert("Fail to Login")
+          this.notification.showSuccessPopup('error','Fail Login')
           this.loading = false;
         });
     this.checkLogin != this.checkLogin;
   }
-}
+
+  show() {
+
+  }
+  }

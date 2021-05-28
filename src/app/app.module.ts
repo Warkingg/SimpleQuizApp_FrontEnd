@@ -58,7 +58,7 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +81,7 @@ import { ProfileComponent } from './profile/profile.component';
   entryComponents: [
     AddQuestionComponent,
     AddThemeComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]
