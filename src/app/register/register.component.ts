@@ -3,7 +3,6 @@ import {RegisterService} from '../service/register.service';
 import {User} from '../model/user';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 import {NotificationService} from '../notification.service';
 @Component({
   selector: 'app-register',

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ForgotPasswordService} from '../service/forgot-password.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from "sweetalert2/dist/sweetalert2.js"
+
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',

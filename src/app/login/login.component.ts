@@ -3,7 +3,6 @@ import {LoginService} from '../service/login.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 import {NotificationService} from '../notification.service';
 declare var $:any;
 declare var Swal:any;
@@ -41,7 +40,4 @@ export class LoginComponent implements OnInit {
     this.checkLogin != this.checkLogin;
   }
 
-  show() {
-
-  }
   }
